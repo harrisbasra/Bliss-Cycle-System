@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bliss Cycle System</string>
+    <string name="Title">BLISS CYCLE SYSTEM</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="title_activity_ride">Ride</string>
+    <string name="title_activity_view_records">ViewRecords</string>
+</resources>
