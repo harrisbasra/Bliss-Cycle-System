@@ -12,8 +12,11 @@ import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.TextView;
 
 import com.cyclesystem.bliss.databinding.ActivityViewRecordsBinding;
+
+import java.util.Date;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -98,7 +101,12 @@ public class ViewRecords extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mVisible = true;
-
+        Date h = new Date();
+        String A = String.valueOf(h.getDate());
+        String B = String.valueOf(h.getMonth());
+        String F = "Today,  "+A+"-"+B+"-"+"2022";
+        TextView tev = (TextView) findViewById(R.id.textView5);
+        tev.setText(F);
     }
 
     @Override
@@ -112,11 +120,7 @@ public class ViewRecords extends AppCompatActivity {
     }
 
     private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
-        }
+
     }
 
     private void hide() {
