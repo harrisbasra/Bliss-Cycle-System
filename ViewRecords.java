@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cyclesystem.bliss.databinding.ActivityViewRecordsBinding;
@@ -107,6 +108,8 @@ public class ViewRecords extends AppCompatActivity {
         String F = "Today,  "+A+"-"+B+"-"+"2022";
         TextView tev = (TextView) findViewById(R.id.textView5);
         tev.setText(F);
+
+
     }
 
     @Override

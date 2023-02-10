@@ -130,7 +130,7 @@ public class MainMenu extends AppCompatActivity {
         NewRide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Starter = new Intent(MainMenu.this, Ride.class);
+                Intent Starter = new Intent(MainMenu.this, MapsActivity.class);
                 startActivity(Starter);
             }
         });
