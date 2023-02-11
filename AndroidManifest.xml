@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BlissCycleSystem"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Payment_details"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivityJ"
+            android:exported="false" />
+        <activity
+            android:name=".EndResults"
+            android:exported="false" />
+        <activity
+            android:name=".FinalResults"
+            android:exported="false"
+            android:label="@string/title_activity_final_results"
+            android:theme="@style/Theme.BlissCycleSystem.NoActionBar" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -54,16 +69,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDJPchUz7qLAvuK454Wo3DloRo2CvsRRak" />
-
     </application>
 
 </manifest>

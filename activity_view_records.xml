@@ -60,7 +60,7 @@
                 app:srcCompat="@android:drawable/ic_input_add" />
 
             <ListView
-                android:id="@+id/lv"
+                android:id="@+id/lvlv"
                 android:layout_width="333dp"
                 android:layout_height="536dp"
 

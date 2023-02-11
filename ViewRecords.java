@@ -12,12 +12,18 @@ import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cyclesystem.bliss.databinding.ActivityViewRecordsBinding;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -108,10 +114,51 @@ public class ViewRecords extends AppCompatActivity {
         String F = "Today,  "+A+"-"+B+"-"+"2022";
         TextView tev = (TextView) findViewById(R.id.textView5);
         tev.setText(F);
+        String Banana = "";
 
+        try {
+            FileInputStream fin = openFileInput("Records.txt");
+            int a;
+            StringBuilder temp = new StringBuilder();
+            while ((a = fin.read()) != -1) {
+                temp.append((char)a);
+            }
+            Banana = temp.toString();
+            fin.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        String Funny[] = arrayreturner(Banana);
+        ListView DB = (ListView) findViewById(R.id.lvlv);
 
+        ArrayAdapter<String> Daniyal ;
+        Daniyal= new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Funny );
+        DB.setAdapter(Daniyal);
     }
-
+    String[] arrayreturner(String arr){
+        int slashes=1;
+        for (int i = 0; i < arr.length(); i++) {
+            if(arr.charAt(i)=='|'){
+                slashes++;
+            }
+        }
+        Toast.makeText(this, String.valueOf(slashes), Toast.LENGTH_SHORT).show();
+        String divided[] = new String[slashes];
+        int ii=0;
+        for(int i=0;i<slashes;i++){
+            divided[i]="";
+        }
+        for(int i=0;i<arr.length();i++){
+            if(arr.charAt(i)=='|'){
+                ii++;
+            }
+            else{
+                divided[ii] = divided[ii]+arr.charAt(i);
+            }
+        }
+        return divided;
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
