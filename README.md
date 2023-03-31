@@ -32,7 +32,7 @@ To use the app, follow these steps:
 
 ## Credits
 
-This app was developed by [Your Name] as a project for [Course Name] at [University Name].
+This app was developed by Harris Khalid.
 
 ## License
 
