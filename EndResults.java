@@ -29,6 +29,7 @@ public class EndResults extends AppCompatActivity {
 
             }
         });
+
         float Shower = 0;
 
         Double View = null;
@@ -39,13 +40,28 @@ public class EndResults extends AppCompatActivity {
             while ((a = fin.read()) != -1) {
                 temp.append((char) a);
             }
+
             Shower = (float) Double.parseDouble(temp.toString());
+            if(Double.valueOf(temp.toString())<0.1){
+                Shower = (float) 0.1;
+            }
             TextView pop = (TextView) findViewById(R.id.textView2);
             View = (0.5 * Shower) + 100;
             View = View * 100;
             View = Math.floor(View);
             View = View / 100;
-            pop.setText("THANKS FOR USING ! YOU DROVE " + Shower + " metres in this ride !\n It means PKR " + View + "/- PayAble");
+            String VA = String.valueOf(View);
+            String FV = "";
+            int l = 0;
+            for(int i=0;i<VA.length();i++){
+                if(VA.charAt(i)=='.'){
+                    l=i;
+                }
+            }
+            for(int i=0;i<l;i++){
+                FV = FV+VA.charAt(i);
+            }
+            pop.setText("THANKS FOR USING ! YOU DROVE " + Shower + " metres in this ride !\n It means PKR " + FV + "/- PayAble");
             fin.close();
 
         } catch (IOException e) {
@@ -112,7 +128,7 @@ public class EndResults extends AppCompatActivity {
                     Toast.makeText(EndResults.this,"No UPI app found, please install one to continue",Toast.LENGTH_SHORT).show();
                 }
 
-
+                Toast.makeText(EndResults.this, "Payment Successfully Transferred to Selected Application", Toast.LENGTH_SHORT).show();
 
 
             }

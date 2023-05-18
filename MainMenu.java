@@ -141,6 +141,12 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(Starter);
             }
         });
+        binding.button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainMenu.this, PreBookingMaps.class));
+            }
+        });
     }
 
     @Override

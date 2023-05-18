@@ -43,8 +43,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // I suppressed the missing-permission warning because this wouldn't be executed in my
         // case without location services being enabled
         @SuppressLint("MissingPermission") android.location.Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-        double userLat = lastKnownLocation.getLatitude();
-        double userLong = lastKnownLocation.getLongitude();
+
+
+        double userLat = 0.0;
+        double userLong = 0.0;
 
 
 
@@ -153,24 +155,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                if(!(AAAA.equals("")&&BBBB.equals(""))){
+                    double lat2 = Double.parseDouble(AAAA);
+                    double lon2 = Double.parseDouble(BBBB);
 
-                double lat2 = Double.parseDouble(AAAA);
-                double lon2 = Double.parseDouble(BBBB);
 
-
-                double theta = lon1 - lon2;
-                double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-                dist = Math.acos(dist);
-                dist = (dist * 180.0 / Math.PI);
-                dist = dist * 60 * 1.1515;
-                dist = dist * 1.609344;
-                dist = dist*1000;
-                if(dist<0){
-                    dist=-1*dist;
+                    double theta = lon1 - lon2;
+                    double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+                    dist = Math.acos(dist);
+                    dist = (dist * 180.0 / Math.PI);
+                    dist = dist * 60 * 1.1515;
+                    dist = dist * 1.609344;
+                    dist = dist*1000;
+                    if(dist<0){
+                        dist=-1*dist;
+                    }
+                    Total = Total+dist;
+                    TextView opi = (TextView) findViewById(R.id.bance);
+                    opi.setText("Distance: "+Total+" m");
                 }
-                Total = Total+dist;
-                TextView opi = (TextView) findViewById(R.id.bance);
-                opi.setText("Distance: "+Total+" m");
+                else{
+
+                }
             }
         });
     }

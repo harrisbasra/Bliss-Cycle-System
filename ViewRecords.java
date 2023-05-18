@@ -5,8 +5,10 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.MotionEvent;
@@ -19,8 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cyclesystem.bliss.databinding.ActivityViewRecordsBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -135,6 +141,59 @@ public class ViewRecords extends AppCompatActivity {
         ArrayAdapter<String> Daniyal ;
         Daniyal= new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Funny );
         DB.setAdapter(Daniyal);
+
+        /////////////////...........................................................................
+
+        FloatingActionButton Plus = findViewById(R.id.floatingActionButton3);
+        Plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent o = new Intent(ViewRecords.this, MapsActivity.class);
+                startActivity(o);
+            }
+        });
+
+        FloatingActionButton Export = findViewById(R.id.floatingActionButton2);
+        Export.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String SEL = "" ;
+                try {
+                    FileInputStream fin = openFileInput("Records.txt");
+                    int a;
+                    StringBuilder temp = new StringBuilder();
+                    while ((a = fin.read()) != -1) {
+                        temp.append((char)a);
+                    }
+                    SEL = temp.toString();
+                    fin.close();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                SEL.replaceAll("|", "\n");
+
+
+                FileOutputStream outputStream = null;
+                try {
+                    String fileName = "Bliss Cycle System Report.txt";
+                    File documentsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+                    File file = new File(documentsDir, fileName);
+                    outputStream = new FileOutputStream(file);
+                    outputStream.write(SEL.getBytes());
+                    outputStream.close();
+                    Toast.makeText(ViewRecords.this, "File has been exported to Documents as Bliss Cycle System Report.txt", Toast.LENGTH_SHORT).show();
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+            }
+        });
+
     }
     String[] arrayreturner(String arr){
         int slashes=1;
@@ -143,7 +202,7 @@ public class ViewRecords extends AppCompatActivity {
                 slashes++;
             }
         }
-        Toast.makeText(this, String.valueOf(slashes), Toast.LENGTH_SHORT).show();
+
         String divided[] = new String[slashes];
         int ii=0;
         for(int i=0;i<slashes;i++){
@@ -158,6 +217,7 @@ public class ViewRecords extends AppCompatActivity {
             }
         }
         return divided;
+
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

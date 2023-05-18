@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity">
+    tools:context=".PreBookingMaps">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -25,20 +25,26 @@
             android:background="#cc3b60a7"
             android:orientation="horizontal">
 
-            <Button
+            <EditText
                 android:id="@+id/beaunce"
                 android:text="End The Ride"
                 android:layout_marginBottom="40dp"
-
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <Button
                 android:id="@+id/bance"
-                android:text="Distance: XXXXX m"
-                android:textSize="20dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/bne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book"
+                android:textSize="20dp" />
 
 
         </LinearLayout>
