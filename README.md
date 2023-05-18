@@ -2,12 +2,21 @@
 
 This is an android app that allows users to take a cycle ride using Google Maps API to measure distances and charge money based on it. The payment can be done using Google Pay API. The app also allows users to view and export the list of previous trips.
 
+## NEW FEATURE
+
+- You can now search for your favourite places on Maps
+- Pre Book Feature is out Now !
+
+
 ## Features
 
 - Take a cycle ride using Google Maps API
 - Measure distances and charge money based on it
 - Payment can be done using Google Pay API
 - View and export the list of previous trips
+- Search for favourite places on Maps
+- Pre Book Feature Available
+
 
 ## Installation
 
@@ -29,6 +38,7 @@ To use the app, follow these steps:
 6. Select the "Pay Now" button.
 7. Enter your payment details using Google Pay API.
 8. Select the "View Trips" button to view and export the list of previous trips.
+9. Visit Pre Book Page for Search & Pre Book
 
 ## Credits
 
